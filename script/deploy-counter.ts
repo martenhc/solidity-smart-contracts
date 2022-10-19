@@ -8,7 +8,8 @@ const deploy = async () => {
 };
 
 const count = async (contract: Contract) => {
-  console.log("Counter", await contract.count());
+  await contract.count();
+  console.log("Counter", await contract.getCounter());
 };
 
 deploy().then(count);

@@ -1,4 +1,8 @@
-# Smart contracts practice
+## Smart contracts practice
+
+This is a test project made while following ThePrimeagen's Web3 Smart Contracts course in [Frontendmasters](https://frontendmasters.com/courses/web3-smart-contracts/).
+
+I have taken the time to add some of my coding standars, as well as explaining some key concepts in this README, and sometimes as comments in the code to help (me) understand what's happening at every step of the process.
 
 ### Local test chainblock network deployment
 
@@ -7,9 +11,15 @@
 ### Contracts
 
 - HelloWorld
-  This contract returns a value without doing making changes. It purely reads a state.
+  - hello(): This contract's only _pure_ method returns a hardcoded value without reading it from the blockchain.
 - Counter
-  There is a transaction that has to be processed, hence a new block is created each time this is invoked. Value mutations also require gas.
+  - count(): There is a state mutation that has to be processed, hence a new block is created each time this is invoked. Value mutations also require gas.
+  - getCounter(): This is a _view_ function, hence no changes are expected to be processed. No gas is consumed.
+
+#### Pure vs View functions
+
+- Pure functions not only indicate that no change is being done in the blockchain, but also that no value from the blockchain is being read.
+- View functions don't change values, but can read a value from the blockchain.
 
 ### Additional notes
 
