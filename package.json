@@ -7,7 +7,8 @@
     "build": "npx webpack",
     "contract:compile": "npx hardhat compile",
     "dev": "npx webpack serve",
-    "deploy:local": "npx hardhat run script/deploy-hello.ts --network localhost",
+    "deploy:local:hello": "npx hardhat run script/deploy-hello.ts --network localhost",
+    "deploy:local:counter": "npx hardhat run script/deploy-counter.ts --network localhost",
     "local:node": "npx hardhat node",
     "test": "npx hardhat test"
   },
