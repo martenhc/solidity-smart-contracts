@@ -1,15 +1,18 @@
-import { providers, Contract } from "ethers";
+import { Contract, providers } from "ethers";
 import { RequestMethod } from "../data/enum/request-method";
+import { getCounterContract } from "./util/contract";
+
+/***** RPC Funcs *****/
 
 const hasAvailableAccounts = async () => {
   let accounts: Array<string>;
 
-  accounts = await eth.request({
+  accounts = await ethProvider.request({
     method: RequestMethod.eth_accounts,
   });
 
   if (!accounts || accounts.length === 0) {
-    accounts = await eth.request({
+    accounts = await ethProvider.request({
       method: RequestMethod.eth_requestAccounts,
     });
   }
@@ -17,34 +20,46 @@ const hasAvailableAccounts = async () => {
   return !accounts || accounts.length === 0;
 };
 
+/***** Funcs *****/
+
 const getContract = async () => {
   if (await hasAvailableAccounts()) {
-    alert("No Metamask account available");
-    return;
+    alert("No Metamask account available.");
+    throw Error("No Metamask account available.");
   }
 
-  const helloWorldContract = new Contract(
-    // Contract address created on deployment. It's always the same in test network.
-    // TODO: replace hardcode
-    "0x5fbdb2315678afecb367f032d93f642f64180aa3",
-    [
-      "function hello() public pure returns (string memory)", // Signature of the method to call
-    ],
-    new providers.Web3Provider(eth) // Using Metamask, so connect with that as a provider
-  );
-
-  document.body.innerHTML = await helloWorldContract.hello();
+  return getCounterContract(ethProvider);
 };
 
-/*********/
+/***** Globals *****/
 
-let eth: providers.ExternalProvider;
+let ethProvider: providers.ExternalProvider;
+let counterContract: Contract;
+const counterButton = document.getElementsByClassName("count-button")[0];
+const countContainer = document.getElementsByClassName("count-container")[0];
+
+/**********/
+
+// No need for removal right now
+counterButton.addEventListener("click", async () => {
+  // Await for transaction to be accepted.
+  const transaction = await counterContract.count();
+  // Await for transaction to be confirmed.
+  await transaction.wait();
+  countContainer.innerHTML = await counterContract.getCounter();
+});
 
 if (window.ethereum) {
-  eth = window.ethereum;
+  // From Ethers docs: A Provider abstracts a connection to the Ethereum blockchain,
+  // for issuing queries and sending state changing transactions.
+  // In our case, this is Metamask.
+  ethProvider = window.ethereum;
 } else {
   alert("Get Metamask");
   throw new Error("Get Metamask");
 }
 
-getContract();
+getContract().then(async (contract) => {
+  counterContract = contract;
+  countContainer.innerHTML = await counterContract.getCounter();
+});

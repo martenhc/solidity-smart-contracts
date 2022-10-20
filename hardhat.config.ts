@@ -7,4 +7,9 @@ module.exports = {
   paths: {
     sources: "./contract",
   },
+  networks: {
+    hardhat: {
+      chainId: 1337,
+    },
+  },
 };

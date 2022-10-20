@@ -1,7 +1,7 @@
 import "@nomiclabs/hardhat-ethers";
 import { Contract } from "ethers";
 import { ContractName } from "../data/enum/contract";
-import { deployContractToPrivateTestNetwork } from "../test/util/contract";
+import { deployContractToPrivateTestNetwork } from "../src/util/contract";
 
 const deploy = async () => {
   return await deployContractToPrivateTestNetwork(ContractName.HelloWorld);
