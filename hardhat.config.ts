@@ -1,3 +1,5 @@
+// Adding imports to the config, so when executing "npx hardhat"
+// it loads this, hence it loads these libraries.
 import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-ethers";
 

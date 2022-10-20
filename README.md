@@ -25,6 +25,8 @@ This file is not pushed because the values of the contract addresses will change
 - Metamask assumes that any local networks' chainId is 1337. Hardhat uses another id, that is why we are setting this up in the config.
   Read more bout it [here](https://hardhat.org/hardhat-network/docs/metamask-issue).
 
+---
+
 ### "NONCE too high" issue.
 
 To fix this issue, reset your account in Metamask. [Like so](https://miro.medium.com/max/596/1*3mQe7MwIJFugo7E7h_F1kg.gif).
