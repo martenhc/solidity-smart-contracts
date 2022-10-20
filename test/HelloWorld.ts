@@ -1,6 +1,6 @@
 import "@nomiclabs/hardhat-ethers";
 import { expect } from "chai";
-import { ContractName } from "../data/enum/contract";
+import { ContractName } from "../src/data/enum/contract";
 import { deployContractToPrivateTestNetwork } from "../src/util/deploy";
 
 describe("hellor world", () => {

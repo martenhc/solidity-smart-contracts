@@ -1,5 +1,5 @@
 import { ethers } from "hardhat";
-import { ContractName } from "../../data/enum/contract";
+import { ContractName } from "../data/enum/contract";
 
 export const deployContractToPrivateTestNetwork = async (
   contractName: keyof typeof ContractName
