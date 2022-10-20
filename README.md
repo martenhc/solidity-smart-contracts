@@ -6,7 +6,7 @@ I have taken the time to add some of my coding standars (though none of this is 
 
 ### Requirements:
 
-- Install (Metamask)[https://metamask.io/] and create an account.
+- Install [Metamask](https://metamask.io/) and create an account.
 
 ### Local test chainblock network deployment
 
@@ -27,7 +27,7 @@ This file is not pushed because the values of the contract addresses will change
 
 ### "NONCE too high" issue.
 
-To fix this issue, reset your account in Metamask. [Like so](https://miro.medium.com/max/596/1*3mQe7MwIJFugo7E7h_F1kg.gif)
+To fix this issue, reset your account in Metamask. [Like so](https://miro.medium.com/max/596/1*3mQe7MwIJFugo7E7h_F1kg.gif).
 
 ---
 
