@@ -1,6 +1,6 @@
 import { Contract, providers } from "ethers";
 import { RequestMethod } from "../data/enum/request-method";
-import { getCounterContract } from "./util/contract";
+import { getCounterContract as getContract } from "./util/contract";
 
 /***** RPC Funcs *****/
 
@@ -22,13 +22,13 @@ const hasAvailableAccounts = async () => {
 
 /***** Funcs *****/
 
-const getContract = async () => {
+const getCounterContract = async () => {
   if (await hasAvailableAccounts()) {
     alert("No Metamask account available.");
     throw Error("No Metamask account available.");
   }
 
-  return getCounterContract(ethProvider);
+  return getContract(ethProvider);
 };
 
 /***** Globals *****/
@@ -59,7 +59,13 @@ if (window.ethereum) {
   throw new Error("Get Metamask");
 }
 
-getContract().then(async (contract) => {
+getCounterContract().then(async (contract) => {
   counterContract = contract;
+
+  contract.on(
+    contract.filters.CounterIncrement(),
+    (counter) => (countContainer.innerHTML = counter)
+  );
+
   countContainer.innerHTML = await counterContract.getCounter();
 });
