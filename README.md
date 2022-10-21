@@ -2,7 +2,7 @@
 
 This is a test project made while following ThePrimeagen's Web3 Smart Contracts course in [Frontendmasters](https://frontendmasters.com/courses/web3-smart-contracts/).
 
-I have taken the time to add some of my coding standars (though none of this is prod ready!), as well as explaining some key concepts in this README, and sometimes as comments in the code to help (me) understand what's happening at every step of the process.
+I have taken the time to add some of my coding standars (though none of this is prod ready!), as well as explaining some key concepts in this README, and sometimes as comments in the code _([this](https://github.com/martenhc/solidity-smart-contracts/blob/master/contract/Hero.sol) being the main example)_ to help (me) understand what's happening at every step of the process.
 
 ### Requirements:
 
