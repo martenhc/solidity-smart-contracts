@@ -1,6 +1,6 @@
 import { Contract, providers } from "ethers";
-import { RequestMethod } from "./data/enum/request-method";
-import { getCounterContract as getContract } from "./util/contract";
+import { RequestMethod } from "../data/enum/request-method";
+import { getCounterContract as getContract } from "../util/contract";
 
 /***** RPC Funcs *****/
 

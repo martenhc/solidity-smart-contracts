@@ -1,6 +1,6 @@
 import { Contract, providers } from "ethers";
-import Counter from "../../artifacts/contract/Counter.sol/Counter.json";
-import HelloWorld from "../../artifacts/contract/HelloWorld.sol/HelloWorld.json";
+import Counter from "../artifacts/contract/Counter.sol/Counter.json";
+import HelloWorld from "../artifacts/contract/HelloWorld.sol/HelloWorld.json";
 
 export const getCounterContract = (provider: providers.ExternalProvider) =>
   new Contract(
