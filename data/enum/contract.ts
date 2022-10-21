@@ -3,3 +3,7 @@ export enum ContractName {
   Counter = "Counter",
   Hero = "Hero",
 }
+
+export enum TestContractName {
+  TestHero = "TestHero",
+}

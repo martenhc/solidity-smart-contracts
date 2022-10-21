@@ -21,11 +21,11 @@ contract Hero {
     //   address2: [...]
     //   ...
     // }
-    mapping(address => uint256[]) addressToHeroes;
+    mapping(address => uint32[]) addressToHeroes;
 
     // IMPORTANT: block difficulty and timestamp could be manipulated.
     // Check https://docs.chain.link/docs/vrf/v2/introduction/ for a potential prod-ready solution.
-    function generateRandomNumber() public view returns (uint256) {
+    function generateRandomNumber() public view virtual returns (uint256) {
         return
             uint256(
                 // keccak256 generates out a random number (0 to 2^256)
@@ -37,7 +37,7 @@ contract Hero {
     // memory that is stored on the contract.
     // It gets the array into a memory location, so we get the full array
     // as opposed to only the pointer to the array.
-    function getHeroes() public view returns (uint256[] memory) {
+    function getHeroes() public view returns (uint32[] memory) {
         return addressToHeroes[msg.sender];
     }
 
@@ -46,6 +46,7 @@ contract Hero {
         // Assert conditions. If not met, the contract will revert itself, sending the specified error.
         require(msg.value >= 0.05 ether, "More ether is needed");
 
+        // TODO: Messure if using uint8 for stats makes is worth it having to do these casts
         uint8[] memory stats = new uint8[](5);
         stats[uint8(Stat.Strength)] = 2;
         stats[uint8(Stat.Health)] = 7;
@@ -68,8 +69,9 @@ contract Hero {
         do {
             uint8 position = uint8(generateRandomNumber() % statsArrayLength);
             // Stat values can go from 1 to 18, the maximum decrementing by 1 for each subsequent stat.
-            uint8 value = uint8(
-                generateRandomNumber() % ((13 + statsArrayLength) + 1)
+            // value is uint32 because we will be shifting it.
+            uint32 value = uint32(
+                (generateRandomNumber() % (13 + statsArrayLength)) + 1
             );
 
             // Binarily shift X amount of values to the left to position our value.
