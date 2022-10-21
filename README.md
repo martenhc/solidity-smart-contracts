@@ -30,18 +30,3 @@ This file is not pushed because the values of the contract addresses will change
 ### "NONCE too high" issue.
 
 To fix this issue, reset your account in Metamask. [Like so](https://miro.medium.com/max/596/1*3mQe7MwIJFugo7E7h_F1kg.gif).
-
----
-
-### Notes on contracts
-
-- HelloWorld
-  - hello(): This contract's only _pure_ method returns a hardcoded value without reading it from the blockchain.
-- Counter
-  - count(): There is a state mutation that has to be processed, hence a new block is created each time this is invoked. Value mutations also require gas.
-  - getCounter(): This is a _view_ function, hence no changes are expected to be processed. No gas is consumed.
-
-#### Pure vs View functions
-
-- Pure functions not only indicate that no change is being done in the blockchain, but also that no value from the blockchain is being read.
-- View functions don't change values, but can read a value from the blockchain.
