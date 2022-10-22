@@ -6,9 +6,9 @@
   "scripts": {
     "build": "npx webpack",
     "contract:compile": "npx hardhat compile",
-    "dev": "npx webpack serve",
     "deploy:local:hello": "npx hardhat run deployment/deploy-hello.ts --network localhost",
     "deploy:local:counter": "npx hardhat run deployment/deploy-counter.ts --network localhost",
+    "dev": "npx webpack serve",
     "local:node": "npx hardhat node",
     "test": "npx hardhat test"
   },
