@@ -2,7 +2,7 @@
 
 This is a test project made while following ThePrimeagen's Web3 Smart Contracts course in [Frontendmasters](https://frontendmasters.com/courses/web3-smart-contracts/).
 
-I have taken the time to add some of my coding standars _(though none of this is prod ready!)_, as well as explaining some key concepts in this README and in the code _([this](https://github.com/martenhc/solidity-smart-contracts/blob/master/contract/Hero.sol) being the main example)_ to help (myself) understand what's happening at every step of the process.
+I have taken the time to add some of my coding standars _(though none of this is prod ready!)_, as well as explaining some key concepts in this README and in the code _([this](https://github.com/martenhc/solidity-smart-contracts/blob/master/contract/Hero.sol) being the main example)_ to help _(myself)_ understand what's happening at every step of the process.
 
 ### Requirements:
 
@@ -22,12 +22,19 @@ Webpack is configured to read values from the .env file and make them available 
 Make sure that you create a .env file with the values defined in webpack.config.js, in the webpack.DefinePlugin consctuctor.
 This file is not pushed because the values of the contract addresses will change. Get them from your local network's logs after deploying your contracts.
 
-### Hardhat configuration (hardhat.config.ts)
+### Hardhat [configuration](https://github.com/martenhc/solidity-smart-contracts/blob/master/hardhat.config.ts)
 
 - Hardhat's default sources folder for contracts is `./contracts`. This has been overriden in `hardhat.config.ts` to use `./contract` instead, since I rather have folder names in singular.
 
 - Metamask assumes that any local networks' chainId is 1337. Hardhat uses another id, that is why we are setting this up in the config.
   Read more bout it [here](https://hardhat.org/hardhat-network/docs/metamask-issue).
+
+### Hero contract deployment
+
+This [contract]((https://github.com/martenhc/solidity-smart-contracts/blob/master/contract/Hero.sol) exceeds the maximum 24kb size.
+
+We could implement the [Diamond Pattern](https://eips.ethereum.org/EIPS/eip-2535) to work around this limitation.
+**This remains as a TODO in this repo at the moment.**
 
 ---
 
